@@ -1,14 +1,15 @@
- package com.example.agile_phoneshoping;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+package com.example.agile_phoneshoping.activity;
 
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.example.agile_phoneshoping.R;
 import com.example.agile_phoneshoping.fragment.CartFragment;
 import com.example.agile_phoneshoping.fragment.HomeFragment;
 import com.example.agile_phoneshoping.fragment.ProfileFragment;
@@ -17,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import q.rorbin.badgeview.QBadgeView;
 
- public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     int badgeCount = 16;

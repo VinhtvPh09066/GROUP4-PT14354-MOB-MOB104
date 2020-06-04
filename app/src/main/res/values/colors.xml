@@ -13,4 +13,5 @@
     <color name="colorDark">#515C6F</color>
     <color name="colorGray">#727C8E</color>
     <color name="colorRedOrange">#ff6969</color>
+    <color name="colorLightGray">#E9E9E9</color>
 </resources>
