@@ -18,7 +18,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText edtPassword;
     private Button btnLogin;
     private TextView tvSignUp;
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validater()) {
-                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
             }
@@ -42,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
     }
