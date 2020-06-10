@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.RegisterActivity" />
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -21,6 +20,18 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PurchaseActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+        android:name=".activity.OrderPlaceActivity"
+        android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CardActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
