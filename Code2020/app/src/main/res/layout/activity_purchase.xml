@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightGray"
+    tools:context=".activity.PurchaseActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorGray2"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/backpurchase2"
+            android:src="@drawable/back3"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:text="Checkout"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="160dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="SHIPPING ADDRESS"
+                android:textColor="@color/colorGray2"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Lê Thanh Hùng"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvsonha"
+                android:text="Tổ dân phố Thị Cẩm"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvphuong"
+                android:text="Xuân Phương"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvquan"
+                android:text="Nam Từ Liêm"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvtinh"
+                android:text="Hà Nội"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/btnupdateadd"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorLightGray"
+            android:layout_width="match_parent"
+            android:drawableRight="@drawable/rounder_next"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="100dp"
+        android:background="@color/colorDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginLeft="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="280dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="PAYMENT METHOD"
+                android:textColor="@color/colorGray2"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img"
+                android:src="@drawable/mastercard2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tvcard"
+                android:layout_marginLeft="12dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="Master Card ending 1234"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        </LinearLayout>
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/btncard"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorLightGray"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/rounder_next"
+        android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <View
+        android:layout_marginLeft="100dp"
+        android:background="@color/colorDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+        <LinearLayout
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginLeft="32dp"
+                android:text="ITEMS"
+                android:textColor="@color/colorGray2"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartList2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginLeft="100dp"
+        android:background="@color/colorDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginLeft="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="300dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/sale"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"/>
+            <EditText
+                android:id="@+id/edtSale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="Add Promo Code"
+                android:textColorHint="@color/colorRedOrange"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/colorPrimaryDark" />/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnsale"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorLightGray"
+            android:layout_width="match_parent"
+            android:drawableRight="@drawable/rounder_next"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_marginLeft="32dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="150dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/colorDark"
+                android:text="TOTAL"
+                android:textSize="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/colorRedOrange"
+                    android:text="$"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvTongtien2"
+                    android:textColor="@color/colorRedOrange"
+                    android:text="88.88"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView
+                android:textColor="@color/colorDark"
+                android:text="Free ship"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnPlaceorder"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/rounder_button"
+            android:drawableRight="@drawable/go_arrow_rounded"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="PLACE ORDER"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

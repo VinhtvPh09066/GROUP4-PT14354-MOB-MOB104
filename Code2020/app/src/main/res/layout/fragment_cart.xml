@@ -5,14 +5,93 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorAccent"
+    android:background="@color/colorLightGray"
     tools:context=".fragment.CartFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:text="Cart page" />
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorGray2"
+        android:layout_height="56dp">
+        <TextView
+            android:gravity="center"
+            android:text="My Cart"
+            android:textSize="26sp"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartList"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        />
+    <View
+        android:background="@color/colorDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_marginBottom="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_marginLeft="56dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="150dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/colorDark"
+                android:text="TOTAL"
+                android:textSize="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/colorRedOrange"
+                    android:text="$"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvTongtien"
+                    android:textColor="@color/colorRedOrange"
+                    android:text="88.88"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnPurchase"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="24dp"
+            android:background="@drawable/rounder_button"
+            android:drawableRight="@drawable/go_arrow_rounded"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Purchase"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/hinhthuc"
+            android:text="Master Card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+        <ImageView
+            android:id="@+id/imgcard"
+            android:src="@drawable/mastercard2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+    </LinearLayout>
 
 </LinearLayout>
