@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText edtPassword;
     private Button btnLogin;
     private TextView tvSignUp;
+    private TextView tv;
     //tạo biến để lưu data
     public  static  final  String SHARED_PREFS="SHAREDPREFS";
     public  static  final  String USERNAME="text";
