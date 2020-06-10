@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     private TextInputEditText edtUsername;
     private TextInputEditText edtPassword;
     private Button btnLogin;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+
 
         // Login navigate
         btnLogin.setOnClickListener(new View.OnClickListener() {

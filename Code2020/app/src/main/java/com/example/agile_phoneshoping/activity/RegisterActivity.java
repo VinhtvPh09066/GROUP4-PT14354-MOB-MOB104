@@ -8,6 +8,7 @@ import com.example.agile_phoneshoping.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
