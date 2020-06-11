@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.agile_phoneshoping.Invoice;
+import com.example.agile_phoneshoping.model.Invoice;
 
 import java.util.List;
 

@@ -94,7 +94,7 @@
         android:layout_height="80dp">
         <ImageView
             android:id="@+id/img3"
-            android:src="@drawable/money"
+            android:src="@drawable/moneyicon"
             android:layout_width="40dp"
             android:layout_height="match_parent"/>
         <TextView
