@@ -29,13 +29,13 @@ public class User {
     @ColumnInfo(name = "role")
     public String role;
 
-    public User(int userId, String name, String email, int phone, String address, String paymentmethod, String role) {
+    public User(int userId, String name, String email, int phone, String address, String paymentmethod) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
         this.paymentmethod = paymentmethod;
-        this.role = role;
+
     }
 }

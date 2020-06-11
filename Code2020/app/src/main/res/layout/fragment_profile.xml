@@ -29,6 +29,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="324dp"
+        android:textColorHint="#515C6F"
         android:layout_height="75dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="60dp"
@@ -42,6 +43,8 @@
             android:id="@+id/edtName"
             android:enabled="false"
             android:layout_width="311dp"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
             android:layout_height="wrap_content"
             android:hint="Name" />
 
@@ -54,6 +57,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="60dp"
+        android:textColorHint="#515C6F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +68,8 @@
             android:id="@+id/edtEmail"
             android:layout_width="311dp"
             android:enabled="false"
+            android:textColor="@color/colorBlack"
+
             android:layout_height="wrap_content"
             android:hint="Email" />
 
@@ -76,6 +82,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="60dp"
+        android:textColorHint="#515C6F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +93,8 @@
             android:id="@+id/edtPhone"
             android:layout_width="312dp"
             android:enabled="false"
+            android:textColor="@color/colorBlack"
+
             android:layout_height="wrap_content"
             android:hint="Phone" />
 
@@ -97,6 +106,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:textColorHint="#515C6F"
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -107,6 +117,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtAddress"
             android:enabled="false"
+            android:textColor="@color/colorBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Address" />
@@ -116,6 +127,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
         android:layout_width="324dp"
+        android:textColorHint="#515C6F"
         android:layout_height="75dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
@@ -129,6 +141,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtMethod"
             android:enabled="false"
+            android:textColor="@color/colorBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Payment Method" />

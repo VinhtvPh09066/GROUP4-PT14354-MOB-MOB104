@@ -8,8 +8,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import com.example.agile_phoneshoping.R;
+import com.example.agile_phoneshoping.database.AppDatabase;
 import com.example.agile_phoneshoping.fragment.CartFragment;
 import com.example.agile_phoneshoping.fragment.HomeFragment;
 import com.example.agile_phoneshoping.fragment.ProfileFragment;
@@ -29,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNAV);
-
         // Bind icon badge with icon cart
         BottomNavigationMenuView bottomNavigationMenuView =
                 (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);

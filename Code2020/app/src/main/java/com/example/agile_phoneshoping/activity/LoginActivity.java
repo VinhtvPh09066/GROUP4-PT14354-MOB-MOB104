@@ -35,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(this,
                 AppDatabase.class, "user.db").allowMainThreadQueries().build();
         //test data
-        db.userDAO().delete(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt","user"));
-        db.userDAO().insert(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt","user"));
+        db.userDAO().delete(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt"));
+        db.userDAO().insert(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt"));
 //List<user> result=db.userDAO().getAll();
         // Login navigate
         btnLogin.setOnClickListener(new View.OnClickListener() {
