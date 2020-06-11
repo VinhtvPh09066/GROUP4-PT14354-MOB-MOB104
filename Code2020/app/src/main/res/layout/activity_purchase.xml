@@ -8,25 +8,7 @@
     android:background="@color/colorLightGray"
     tools:context=".activity.PurchaseActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:background="@color/colorGray2"
-        android:layout_height="56dp">
 
-        <ImageView
-            android:id="@+id/backpurchase2"
-            android:src="@drawable/back3"
-            android:layout_width="24dp"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:layout_marginLeft="30dp"
-            android:gravity="center"
-            android:text="Checkout"
-            android:textSize="20sp"
-            android:textColor="@color/colorWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
-    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_marginTop="16dp"
@@ -147,7 +129,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="240dp">
         <LinearLayout
             android:layout_marginTop="24dp"
             android:orientation="vertical"

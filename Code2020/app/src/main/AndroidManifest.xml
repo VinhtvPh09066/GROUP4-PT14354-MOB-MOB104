@@ -25,14 +25,12 @@
             android:name=".activity.SignupActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.PurchaseActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".activity.PurchaseActivity"/>
         <activity
         android:name=".activity.OrderPlaceActivity"
         android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.CardActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".activity.CardActivity" />
     </application>
 
 </manifest>

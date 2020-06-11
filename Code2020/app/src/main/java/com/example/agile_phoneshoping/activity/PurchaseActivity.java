@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +38,6 @@ public class PurchaseActivity extends AppCompatActivity {
         btnupdateadd = findViewById(R.id.btnupdateadd);
         btncard = findViewById(R.id.btncard);
         btnsale = findViewById(R.id.btnsale);
-        backpurchase = findViewById(R.id.backpurchase2);
         edtSale = findViewById(R.id.edtSale);
         img = findViewById(R.id.img);
         img.setImageDrawable(CartFragment.imgcard.getDrawable());
@@ -51,6 +51,9 @@ public class PurchaseActivity extends AppCompatActivity {
         final int[] tt = {Integer.parseInt(tongtien)};
         tvTongtien2.setText(tongtien);
         recyclerView2 = findViewById(R.id.cartList2);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Checkout");
 
         //Tự phát sinh 50 dữ liệu mẫu
 
@@ -124,13 +127,6 @@ public class PurchaseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        backpurchase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(PurchaseActivity.this, CardActivity.class);
-                startActivity(intent);
-            }
-        });
         btnsale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,6 +141,19 @@ public class PurchaseActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

@@ -2,6 +2,7 @@ package com.example.agile_phoneshoping.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,6 +37,8 @@ public class CardActivity extends AppCompatActivity {
         btncard2= findViewById(R.id.btncard2);
         btnmastercard= findViewById(R.id.btnmastercard);
         btnmoney= findViewById(R.id.btnmoney);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Hình thức thanh toán");
 
         btnmastercard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,5 +68,18 @@ public class CardActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
