@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.agile_phoneshoping.User;
+import com.example.agile_phoneshoping.model.User;
 
 import java.util.List;
 
@@ -25,7 +25,10 @@ public interface UserDAO {
    List<User> getAll();
 
 @Query("SELECT * FROM User WHERE name =:name ")
-    List<User> getUserByName(String name);
+    User getUserByName(String name);
+
+    @Query("DELETE  FROM User where name =:name")
+    int dellUserByName(String name);
 
 
 }

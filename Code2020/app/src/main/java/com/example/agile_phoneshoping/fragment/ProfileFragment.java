@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
 import com.example.agile_phoneshoping.R;
-import com.example.agile_phoneshoping.User;
+import com.example.agile_phoneshoping.model.User;
 import com.example.agile_phoneshoping.database.AppDatabase;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -46,56 +46,60 @@ public class ProfileFragment extends Fragment {
 //lấy com.example.agile_phoneshoping.data từ SharedPreferences
         AppDatabase db = Room.databaseBuilder(getContext(),
                 AppDatabase.class, "user.db").allowMainThreadQueries().build();
-        List<User> users=  db.userDAO().getUserByName("nguyễn văn tú");
-        String a=users.get(0).name;
-        int b=users.get(0).phone;
-        String c=users.get(0).email;
-        String d=users.get(0).address;
-        String e=users.get(0).paymentmethod;
-        edtName.setText(a);
-        edtPhone.setText(String.valueOf(b));
-        edtEmail.setText(c);
-        edtAddress.setText(d);
-        edtPaymentMethod.setText(e);
+     //lấy tài khoản đăng nhập về
         SharedPreferences preferences = getActivity().getSharedPreferences("SHAREDPREFS",getActivity().MODE_PRIVATE);
         String user_name = preferences.getString("text",null);
-        Log.e("userName ", " : "+user_name );
+        Log.e("tài khoản đang online ", " : "+user_name );
+        User u = db.userDAO().getUserByName("nguyễn văn tú");
+        if (u ==null){
 
-
+            Toast.makeText(getContext(),"không có tk nào",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getContext(),"có tài khoản "+u.name,Toast.LENGTH_SHORT).show();
+        }
+//        edtName.setText(a);
+//        edtPhone.setText(String.valueOf(b));
+//        edtEmail.setText(c);
+//        edtAddress.setText(d);
+//        edtPaymentMethod.setText(e);
 
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                AlertDialog.Builder build= new AlertDialog.Builder(getActivity());
-                final View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_updatename, null);
-//                View view1 =  getLayoutInflater().// inflater view
-//                        inflate(R.layout.dialog_updatename, null, false);
-                build.setView(view1);
-                final EditText edtName = view1.findViewById(R.id.edtUpdateName);
-
-                build.setCancelable(false);
-                build.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-
-                        Toast.makeText(getContext(),"chưa cập nhật thông tin",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                build.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String updateName=edtName.getText().toString().trim();
-                        Toast.makeText(getContext()," cập nhật thông tin thành công "+updateName,Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-                build.create().show();
-
+                showDialogName();
             }
         });
         return view;
     }
+    public void showDialogName(){
+        AlertDialog.Builder build= new AlertDialog.Builder(getActivity());
+        final View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_updatename, null,false);
+        build.setView(view1);
+        final EditText edtName = view1.findViewById(R.id.edtUpdateName);
+
+        build.setCancelable(false);
+        build.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+                Toast.makeText(getContext(),"chưa cập nhật thông tin",Toast.LENGTH_SHORT).show();
+            }
+        });
+        build.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String updateName=edtName.getText().toString().trim();
+                Toast.makeText(getContext()," cập nhật thông tin thành công "+updateName,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        build.create().show();
+    }
+
+
+    //dialog
+
+
 
 }

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.agile_phoneshoping.R;
-import com.example.agile_phoneshoping.User;
+import com.example.agile_phoneshoping.model.User;
 import com.example.agile_phoneshoping.database.AppDatabase;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(this,
                 AppDatabase.class, "user.db").allowMainThreadQueries().build();
         //test data
+        db.userDAO().delete(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt","user"));
         db.userDAO().insert(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt","user"));
 //List<user> result=db.userDAO().getAll();
         // Login navigate

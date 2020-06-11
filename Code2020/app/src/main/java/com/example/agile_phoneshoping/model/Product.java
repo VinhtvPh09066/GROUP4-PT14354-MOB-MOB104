@@ -1,4 +1,4 @@
-package com.example.agile_phoneshoping;
+package com.example.agile_phoneshoping.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
