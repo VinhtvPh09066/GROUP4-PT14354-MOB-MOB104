@@ -8,17 +8,26 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.agile_phoneshoping.Product;
 import com.example.agile_phoneshoping.R;
+import com.example.agile_phoneshoping.adapter.ProductAdapter;
 import com.example.agile_phoneshoping.fragment.CartFragment;
 import com.example.agile_phoneshoping.fragment.HomeFragment;
 import com.example.agile_phoneshoping.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import q.rorbin.badgeview.QBadgeView;
 
 public class MainActivity extends AppCompatActivity {
+//    public RecyclerView rv;
+    List<Product> productList = new ArrayList<>();
 
     BottomNavigationView bottomNavigationView;
     int badgeCount = 16;
@@ -73,6 +82,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+//        rv = findViewById(R.id.rv);
+       // for (int i=0;i<20;i++){
+//          Product product = new Product();
+//            product.setName("Iphone" +i);
+//            product.setPrice(20);
+//            product.setDetail("brand");
+ //           product.setColor("red");
+//            productList.add(product);
+//        }
+
 
 
 

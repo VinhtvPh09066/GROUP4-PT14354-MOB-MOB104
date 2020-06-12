@@ -14,7 +14,7 @@ import java.util.List;
 public interface ProductDAO {
 
         @Insert
-        void insertProduct(Product... products);
+        long[] insertProduct(Product... products);
 
         @Delete
         void delete(Product product);
@@ -26,7 +26,8 @@ public interface ProductDAO {
         List<Product> getAllProduct();
 
 
-
+        @Query("Delete from Product")
+        int delAll();
 
 
 }

@@ -35,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(this,
                 AppDatabase.class, "user.db").allowMainThreadQueries().build();
         //test data
-        db.userDAO().insert(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt","user"));
-//List<user> result=db.userDAO().getAll();
+       //db.userDAO().insert(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt","user"));
+//List<user> result=db.userDAO().getAll();am
         // Login navigate
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (validater()) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+
                 }
             }
         });

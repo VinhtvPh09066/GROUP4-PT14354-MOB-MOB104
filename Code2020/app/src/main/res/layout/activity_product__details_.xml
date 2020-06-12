@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imgPhone"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center"
+        android:src="@drawable/iphone"
+        android:layout_width="180dp"
+        android:layout_height="290dp"/>
+
+
+    <LinearLayout
+        android:layout_marginTop="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:text="Name"
+                android:textSize="14sp"
+
+                />
+
+            <TextView
+                android:id="@+id/txt_Name_Product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:text="Iphone : 11" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="right">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:text="Price"
+                android:textSize="14sp"
+
+                />
+
+            <TextView
+                android:textColor="#FF0000"
+                android:id="@+id/txt_Price_Product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:text="4,99$" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:textSize="14sp"
+        android:layout_marginHorizontal="24dp"
+        android:text="BRAND"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        />
+    <TextView
+        android:id="@+id/txt_Brand_Prouct"
+        android:text="Aple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        />
+    <TextView
+        android:textSize="14sp"
+        android:layout_marginHorizontal="24dp"
+        android:text="COLOR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        />
+    <TextView
+        android:id="@+id/txt_Color_Product"
+        android:text="Red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        />
+
+    <Button
+        android:layout_marginTop="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:layout_marginHorizontal="24dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="10dp"
+        android:text="ADD TO CART       "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:background="@drawable/rounder_button"
+        android:drawableRight="@drawable/go_arrow_rounded"
+        />
+</LinearLayout>

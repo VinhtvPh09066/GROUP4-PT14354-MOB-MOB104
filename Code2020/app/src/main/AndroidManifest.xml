@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.Product_Details_Activity"
+            android:theme="@style/ActionBar">
+
+        </activity>
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -28,8 +32,8 @@
             android:name=".activity.PurchaseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-        android:name=".activity.OrderPlaceActivity"
-        android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".activity.OrderPlaceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CardActivity"
             android:theme="@style/AppTheme.NoActionBar" />
