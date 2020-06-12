@@ -16,12 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.room.Room;
 
-import com.example.agile_phoneshoping.Product;
+
 import com.example.agile_phoneshoping.R;
 import com.example.agile_phoneshoping.activity.LoginActivity;
 import com.example.agile_phoneshoping.activity.MainActivity;
 import com.example.agile_phoneshoping.adapter.ProductAdapter;
 import com.example.agile_phoneshoping.database.AppDatabase;
+import com.example.agile_phoneshoping.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,7 @@ List<Product> products;
             //mỗi lần chạy lại app thì xóa bảng đi thêm mới đỡ phải xóa app
             db.productDAO().delAll();
             //xóa xong thêm mới lại
-            db.productDAO().insertProduct(new Product("ss j6","ss j6","red",2000,"samsung","chitiet","image"));
+            db.productDAO().insertProduct(new Product("ss j6","iphone 8","red",2000,"samsung","chitiet","image"));
             db.productDAO().insertProduct(new Product("ss j7","ss j6","red",3000,"samsung","chitiet","image"));
             db.productDAO().insertProduct(new Product("ss j8","ss j6","red",4000,"samsung","chitiet","image"));
             db.productDAO().insertProduct(new Product("ss j9","ss j6","red",5000,"samsung","chitiet","image"));
