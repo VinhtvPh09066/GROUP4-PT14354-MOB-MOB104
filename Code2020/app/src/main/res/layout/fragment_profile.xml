@@ -69,7 +69,6 @@
             android:layout_width="311dp"
             android:enabled="false"
             android:textColor="@color/colorBlack"
-
             android:layout_height="wrap_content"
             android:hint="Email" />
 

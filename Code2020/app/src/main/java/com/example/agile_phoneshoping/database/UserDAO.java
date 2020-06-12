@@ -19,7 +19,7 @@ public interface UserDAO {
     void delete(User user);
 
 @Update
-   void update(User user);
+int update(User user);
 
     @Query("SELECT * FROM User")
    List<User> getAll();
