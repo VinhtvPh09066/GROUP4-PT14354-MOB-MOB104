@@ -48,7 +48,7 @@ public class PurchaseActivity extends AppCompatActivity {
         tvcard = findViewById(R.id.tvcard);
         tvcard.setText(CartFragment.hinhthuc.getText().toString());
         final String tongtien = CartFragment.tvTongtien.getText().toString();
-        final int[] tt = {Integer.parseInt(tongtien)};
+        final double[] tt = {Double.parseDouble(tongtien)};
         tvTongtien2.setText(tongtien);
         recyclerView2 = findViewById(R.id.cartList2);
 
@@ -69,6 +69,7 @@ public class PurchaseActivity extends AppCompatActivity {
         btnplaceorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 intent = new Intent(PurchaseActivity.this, OrderPlaceActivity.class);
                 startActivity(intent);
             }

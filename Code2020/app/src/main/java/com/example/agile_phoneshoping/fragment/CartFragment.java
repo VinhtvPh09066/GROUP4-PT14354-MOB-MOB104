@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
     public TextView tvSoluong;
-    public static TextView tvTongtien,hinhthuc;
+    public static TextView tvTongtien,hinhthuc,tvnoproduct;
     public TextView tvTong;
     public Button btnpurchase;
     public static ImageView imgcard;
@@ -44,6 +45,7 @@ public class CartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
         btnpurchase = view.findViewById(R.id.btnPurchase);
         tvSoluong = view.findViewById(R.id.tvSoluong);
+        tvnoproduct = view.findViewById(R.id.tvnoproduct);
         tvTong = view.findViewById(R.id.tvTong);
         tvTongtien = view.findViewById(R.id.tvTongtien);
         hinhthuc = view.findViewById(R.id.hinhthuc);
@@ -51,6 +53,9 @@ public class CartFragment extends Fragment {
         recyclerView = view.findViewById(R.id.cartList);
         cart = new ArrayList<Cart>();
         Tongtien();
+        if(cart.size()<1){
+            tvnoproduct.setVisibility(View.VISIBLE);
+        }
 
         //Tự phát sinh 50 dữ liệu mẫu
 
@@ -67,15 +72,16 @@ public class CartFragment extends Fragment {
         btnpurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getContext(), PurchaseActivity.class);
-                startActivity(intent);
+                    intent = new Intent(getContext(), PurchaseActivity.class);
+                    startActivity(intent);
+
             }
         });
         return view;
     }
 
     public static void Tongtien() {
-        int tong = 0;
+        double tong = 0;
         cart = new ArrayList<Cart>();
         for (int i = 1; i <= 3; i++) {
             cart.add(new Cart(R.drawable.ip11promax,"iPhone11","Red",50,1));

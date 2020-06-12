@@ -60,7 +60,7 @@ public class CartAdapter extends RecyclerView.Adapter {
         public ImageView imgsanpham;
         public TextView tvtensanpham,tvmausampham,tvgiasanpham,tvsoluongsanpham,tvTong;
         public Button btnTru,btnCong,btnDelete;
-        static int tt = Integer.parseInt(CartFragment.tvTongtien.getText() + "");
+        static double tt = Double.parseDouble(CartFragment.tvTongtien.getText() + "");
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -115,6 +115,7 @@ public class CartAdapter extends RecyclerView.Adapter {
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     int gsp = Integer.parseInt(giasp[0]);
                     int sl = Integer.parseInt(soluong[0]);
                     int t = Integer.parseInt(tong[0]);
@@ -123,6 +124,9 @@ public class CartAdapter extends RecyclerView.Adapter {
                     tong[0] = String.valueOf(t);
                     tvTong.setText(tong[0]);
                     CartFragment.tvTongtien.setText(String.valueOf(tt));
+                    if(CartFragment.cart.size()<1){
+                        CartFragment.tvnoproduct.setVisibility(View.VISIBLE);
+                    }
 
 
                 }

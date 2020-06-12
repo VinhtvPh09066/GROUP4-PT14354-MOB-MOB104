@@ -3,14 +3,15 @@ package com.example.agile_phoneshoping.model;
 public class Cart {
 
     private String TenSP, MauSP;
-    private int ImangeSP,giaSP,slSP;
+    private int ImangeSP,slSP;
+    private double giaSP;
 
-    public Cart(int imangeSP, String tenSP, String mauSP, int giaSP, int slSP) {
+    public Cart(int imangeSP,String tenSP, String mauSP, double giaSP,  int slSP) {
         TenSP = tenSP;
         MauSP = mauSP;
         ImangeSP = imangeSP;
-        this.giaSP = giaSP;
         this.slSP = slSP;
+        this.giaSP = giaSP;
     }
 
     public String getTenSP() {
@@ -37,19 +38,19 @@ public class Cart {
         ImangeSP = imangeSP;
     }
 
-    public int getGiaSP() {
-        return giaSP;
-    }
-
-    public void setGiaSP(int giaSP) {
-        this.giaSP = giaSP;
-    }
-
     public int getSlSP() {
         return slSP;
     }
 
     public void setSlSP(int slSP) {
         this.slSP = slSP;
+    }
+
+    public double getGiaSP() {
+        return giaSP;
+    }
+
+    public void setGiaSP(double giaSP) {
+        this.giaSP = giaSP;
     }
 }
