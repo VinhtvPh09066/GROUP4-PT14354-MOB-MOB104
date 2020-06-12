@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingBottom="160dp"
+    android:orientation="vertical"
+    android:background="@color/colorLightGray"
     tools:context=".activity.OrderPlaceActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:background="@drawable/rounder_anh"
+        android:gravity="center"
+        android:layout_width="160dp"
+        android:layout_height="160dp">
+        <ImageView
+            android:id="@+id/imgsanpham"
+            android:src="@drawable/tichdo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:text="Order Placed!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:text="Your order was placed successfully"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:gravity="center"
+        android:textSize="14sp"
+        android:text="For more details, Check All My Orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:gravity="center"
+        android:textSize="14sp"
+        android:text="page under Profile tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnbackhome"
+        android:layout_marginTop="56dp"
+        android:layout_width="200dp"
+        android:layout_height="56dp"
+        android:background="@drawable/rounder_button"
+        android:text="Back to home"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+</LinearLayout>
