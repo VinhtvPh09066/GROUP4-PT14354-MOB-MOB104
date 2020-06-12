@@ -12,10 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.agile_phoneshoping.Product;
 import com.example.agile_phoneshoping.R;
 import com.example.agile_phoneshoping.activity.Product_Details_Activity;
 import com.example.agile_phoneshoping.itemClick.ClickItemListener;
+import com.example.agile_phoneshoping.model.Product;
 
 import java.util.List;
 
