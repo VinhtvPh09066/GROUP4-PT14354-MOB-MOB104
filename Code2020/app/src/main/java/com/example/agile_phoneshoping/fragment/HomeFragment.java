@@ -60,16 +60,16 @@ List<Product> products;
             db.productDAO().delAll();
             //xóa xong thêm mới lại
             db.productDAO().insertProduct(new Product("phone01","OPPO A92","red",6490000,"OPPO","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone02","Iphone 11 Pro Max 64GB","black",29990000,"APPLE","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone03","Samsung Galaxy A21s","white",5390000,"samsung","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone02","Iphone Pro Max","black",2999000,"APPLE","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone03","Galaxy A21s","white",5390000,"samsung","chitiet","image"));
             db.productDAO().insertProduct(new Product("phone04","OPPO A52","red",5690000,"samsung","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone05","Iphone 11 64GB","red",19990000,"Apple","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone06","Samsung Galaxy A31","black",6490000,"samsung","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone05","Nokia 5.3","black",3690000,"nokia","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone06","Xiaomi Redmi Note9s","red",5990000,"xiaomi","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone07","Vivo Y30","white",46900000,"vivo","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone08","OPPO Reno3","white",8490000,"oppo","chitiet","image"));
-            db.productDAO().insertProduct(new Product("phone09","OPPO Reno2 F","white",6990000,"oppo","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone05","Iphone 11 ","red",19990000,"Apple","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone06","Galaxy A31","black",6490000,"samsung","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone07","Nokia 5.3","black",3690000,"nokia","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone08","Redmi Note9s","red",5990000,"xiaomi","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone09","Vivo Y30","white",4690000,"vivo","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone10","OPPO Reno3","white",8490000,"oppo","chitiet","image"));
+            db.productDAO().insertProduct(new Product("phone11","OPPO Reno2F","white",6990000,"oppo","chitiet","image"));
 
             products=new ArrayList<>();
             products=db.productDAO().getAllProduct();
