@@ -31,7 +31,5 @@ public interface ProductDAO {
     int delAll();
 
 
-    @Query("SELECT * FROM Product WHERE productId =:productId ")
-    Product getProductrById(String productId);
 
 }

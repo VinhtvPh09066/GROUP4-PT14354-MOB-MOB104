@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.agile_phoneshoping.model.OrderProduct;
+import com.example.agile_phoneshoping.model.Product;
 
 import java.util.List;
 
@@ -23,6 +24,10 @@ public interface OrderDAO {
 
 @Query("SELECT * FROM OrderProduct")
     List<OrderProduct> getAllOrder();
+
+
+    @Query("SELECT * FROM OrderProduct WHERE orderId =:orderId ")
+    OrderProduct getProductrById(String orderId);
 
 
 }
