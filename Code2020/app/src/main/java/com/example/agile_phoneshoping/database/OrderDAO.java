@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface OrderDAO {
     @Insert
-    void insertOrder(OrderProduct... orders);
+    long[] insertOrder(OrderProduct... orders);
 
     @Delete
     void delOrder(OrderProduct order);
