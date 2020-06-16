@@ -51,8 +51,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 context.startActivity(intent);
             }
         });
-//        holder.nameproduct.setText(products.get(position).getName());
-//        holder.price.setText(String.valueOf(products.get(position).getPrice()));
+        holder.nameproduct.setText(products.get(position).getName());
+        holder.price.setText(String.valueOf(products.get(position).getPrice()));
     }
 
     @Override

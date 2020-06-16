@@ -7,13 +7,14 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.agile_phoneshoping.model.OrderProduct;
+import com.example.agile_phoneshoping.model.Product;
 
 import java.util.List;
 
 @Dao
 public interface OrderDAO {
     @Insert
-    void insertOrder(OrderProduct... orders);
+    long[] insertOrder(OrderProduct... orders);
 
     @Delete
     void delOrder(OrderProduct order);
@@ -23,6 +24,10 @@ public interface OrderDAO {
 
 @Query("SELECT * FROM OrderProduct")
     List<OrderProduct> getAllOrder();
+
+
+    @Query("SELECT * FROM OrderProduct WHERE orderId =:orderId ")
+    OrderProduct getProductrById(String orderId);
 
 
 }
