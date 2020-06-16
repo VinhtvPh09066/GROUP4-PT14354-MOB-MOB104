@@ -24,8 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView tvSignUp;
     //tạo biến để lưu data
-    public  static  final  String SHARED_PREFS="SHAREDPREFS";
-    public  static  final  String USERNAME="text";
+    public static final String SHARED_PREFS = "SHAREDPREFS";
+    public static final String USERNAME = "text";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(this,
                 AppDatabase.class, "user.db").allowMainThreadQueries().build();
         //test data
-    db.userDAO().delete(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt"));
-    db.userDAO().insert(new User(1,"nguyễn văn tú","tunvph",5555,"hà nam","tiền mặt"));
+        db.userDAO().delete(new User(1, "nguyễn văn tú", "tunvph", 5555, "hà nam", "tiền mặt"));
+        db.userDAO().insert(new User(1, "nguyễn văn tú", "tunvph", 5555, "hà nam", "tiền mặt"));
         // Login navigate
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (validater()) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-
                 }
             }
         });
@@ -95,17 +94,18 @@ public class LoginActivity extends AppCompatActivity {
 
         return true;
     }
+
     //save data
-    public void saveData(){
-        SharedPreferences sharedPreferences=getSharedPreferences(SHARED_PREFS, MODE_PRIVATE );
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString(USERNAME,edtUsername.getText().toString());
+    public void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USERNAME, edtUsername.getText().toString());
         editor.apply();
 
 //        editor.commit();
-        String userName=sharedPreferences.getString(USERNAME,"not found");
-        Log.e("user đăng nhập  là ", ":"+userName );
-        Toast.makeText(getApplicationContext(),"user đăng nhập  là "+userName,Toast.LENGTH_SHORT).show();
+        String userName = sharedPreferences.getString(USERNAME, "not found");
+        Log.e("user đăng nhập  là ", ":" + userName);
+        Toast.makeText(getApplicationContext(), "user đăng nhập  là " + userName, Toast.LENGTH_SHORT).show();
 
 
     }
