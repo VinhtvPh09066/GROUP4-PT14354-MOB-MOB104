@@ -16,6 +16,9 @@ import android.widget.Toast;
 import com.example.agile_phoneshoping.R;
 import com.example.agile_phoneshoping.database.AppDatabase;
 import com.example.agile_phoneshoping.model.OrderProduct;
+import com.example.agile_phoneshoping.staticfuntion;
+
+import java.util.List;
 
 public class Product_Details_Activity extends AppCompatActivity {
     String productId;
@@ -26,6 +29,7 @@ public class Product_Details_Activity extends AppCompatActivity {
     String detailPr;
     String imagePr;
     Button btnAdd;
+
 
     public TextView txt_NameProduct;
     public TextView txt_Color_Product;
@@ -48,6 +52,7 @@ public class Product_Details_Activity extends AppCompatActivity {
         Laydulieu(intent);
         Dodulieu();
 
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(namePr);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,6 +65,7 @@ public class Product_Details_Activity extends AppCompatActivity {
                 Bundle bundle = intent.getExtras();
                 if (bundle != null) {
                     //lay id ve day
+                    productId = bundle.getString("Id");
                     namePr = bundle.getString("name");
                     colorPr = bundle.getString("color");
                     pricePr = Double.parseDouble(bundle.getString("price"));
@@ -67,14 +73,19 @@ public class Product_Details_Activity extends AppCompatActivity {
                     detailPr = bundle.getString("detail");
                     imagePr = bundle.getString("img");
                 }
-                //ADD vo gio hang
-//           long[] a=     db.orderDAO().insertOrder(new OrderProduct("46464", "464646", Integer.parseInt("1")));
-//                if (a[0]>0){
-//                    Toast.makeText(Product_Details_Activity.this,"add thanh cong",Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(Product_Details_Activity.this,"da ton tai",Toast.LENGTH_SHORT).show();
-//
-//                }
+//                ADD vo gio hang
+                OrderProduct product = db.orderDAO().getProductrById(productId);
+                if (product == null) {
+                    long[] a = db.orderDAO().insertOrder(new OrderProduct(productId, productId, Integer.parseInt("1")));
+                    if (a[0] > 0) {
+                        Toast.makeText(Product_Details_Activity.this, "add thanh cong", Toast.LENGTH_SHORT).show();
+                        List<OrderProduct> cartList = db.orderDAO().getAllOrder();
+                        staticfuntion.cart_amount = cartList.size();
+                        Log.e("sl ", cartList.size()+"");
+                    }
+                } else {
+                    Toast.makeText(Product_Details_Activity.this, "da ton tai", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -18,6 +18,7 @@ import com.example.agile_phoneshoping.fragment.CartFragment;
 import com.example.agile_phoneshoping.fragment.HomeFragment;
 import com.example.agile_phoneshoping.fragment.ProfileFragment;
 import com.example.agile_phoneshoping.model.Product;
+import com.example.agile_phoneshoping.staticfuntion;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,12 +27,15 @@ import java.util.List;
 
 import q.rorbin.badgeview.QBadgeView;
 
+import static com.example.agile_phoneshoping.staticfuntion.*;
+
 public class MainActivity extends AppCompatActivity {
 //    public RecyclerView rv;
     List<Product> productList = new ArrayList<>();
 
+
     BottomNavigationView bottomNavigationView;
-    int badgeCount = 16;
+    int badgeCount = cart_amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
