@@ -1,6 +1,7 @@
 package com.example.agile_phoneshoping.model;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,6 +10,7 @@ import androidx.room.PrimaryKey;
 public class User {
 
     @PrimaryKey
+    @NonNull
     public String username;
 
     @ColumnInfo(name = "name")
