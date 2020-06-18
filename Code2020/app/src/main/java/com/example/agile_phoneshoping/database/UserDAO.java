@@ -12,20 +12,23 @@ import java.util.List;
 
 @Dao
 public interface UserDAO {
- @Insert
- long[] insert(User... users);
+    @Insert
+    long[] insert(User... users);
 
- @Delete
+    @Delete
     void delete(User user);
 
-@Update
-int update(User user);
+    @Update
+    int update(User user);
 
     @Query("SELECT * FROM User")
-   List<User> getAll();
+    List<User> getAll();
 
-@Query("SELECT * FROM User WHERE name =:name ")
+    @Query("SELECT * FROM User WHERE name =:name ")
     User getUserByName(String name);
+
+    @Query("SELECT * FROM User WHERE username =:username and password=:password ")
+    User checkUser(String username, String password);
 
     @Query("DELETE  FROM User where name =:name")
     int dellUserByName(String name);
