@@ -119,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         if (result != null) {
             return true;
         }
+        Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu sai !", Toast.LENGTH_SHORT).show();
         return false;
     }
 }
