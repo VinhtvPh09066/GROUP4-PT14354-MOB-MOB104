@@ -20,12 +20,16 @@ import com.example.agile_phoneshoping.model.Product;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> implements ClickItemListener {
+
     List<Product> products;
+
     Context context;
-    public ProductAdapter (List<Product> products,Context context){
+
+    public ProductAdapter(List<Product> products, Context context) {
         this.products = products;
         this.context = context;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,10 +47,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 bundle.putString("Id", products.get(position).getProductId());
                 bundle.putString("name", products.get(position).getName());
                 bundle.putString("color", products.get(position).getColor());
-                bundle.putString("price",String.valueOf(products.get(position).getPrice()));
-                bundle.putString("bard",products.get(position).getBrand());
-                bundle.putString("detail",products.get(position).getDetail());
-                bundle.putString("img",products.get(position).getImage());
+                bundle.putString("price", String.valueOf(products.get(position).getPrice()));
+                bundle.putString("bard", products.get(position).getBrand());
+                bundle.putString("detail", products.get(position).getDetail());
+                bundle.putString("img", products.get(position).getImage());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
@@ -65,7 +69,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView img;
         public TextView nameproduct;
@@ -73,10 +77,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            img =  itemView.findViewById(R.id.imgProduct);
-            nameproduct=itemView.findViewById(R.id.txtName);
-            price=itemView.findViewById(R.id.txtPrice);
+            img = itemView.findViewById(R.id.imgProduct);
+            nameproduct = itemView.findViewById(R.id.txtName);
+            price = itemView.findViewById(R.id.txtPrice);
 
         }
+    }
+
+    public void filterList(List<Product> newList){
+        products = newList;
+        notifyDataSetChanged();
     }
 }
