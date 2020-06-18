@@ -33,20 +33,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         initView();
 
-        AppDatabase db = Room.databaseBuilder(this,
-                AppDatabase.class, "user.db").allowMainThreadQueries().build();
-        //test data
-
-        db.userDAO().delete(new User());
-        db.userDAO().insert(new User(1, "nguyễn văn tú", "tunvph", 5555, "hà nam", "tiền mặt"));
         // Login navigate
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
+
                 if (validater()) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    if (checkUser(edtUsername.getText().toString(), edtPassword.getText().toString())) {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        saveData();
+                    }
+
                 }
             }
         });
@@ -92,6 +90,8 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Mật khẩu phải từ 6 - 10 kí tự !", Toast.LENGTH_SHORT).show();
             edtPassword.requestFocus();
             return false;
+        } else if (username == "username" && password == "username") {
+            return true;
         }
 
         return true;
@@ -108,7 +108,17 @@ public class LoginActivity extends AppCompatActivity {
         String userName = sharedPreferences.getString(USERNAME, "not found");
         Log.e("user đăng nhập  là ", ":" + userName);
         Toast.makeText(getApplicationContext(), "user đăng nhập  là " + userName, Toast.LENGTH_SHORT).show();
+    }
 
+    public boolean checkUser(String u, String p) {
+        AppDatabase db = Room.databaseBuilder(this,
+                AppDatabase.class, "user.db").allowMainThreadQueries().build();
 
+        User result = db.userDAO().checkUser(u, p);
+
+        if (result != null) {
+            return true;
+        }
+        return false;
     }
 }
