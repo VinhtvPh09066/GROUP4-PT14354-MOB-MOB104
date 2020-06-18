@@ -31,7 +31,8 @@ public class ProfileFragment extends Fragment {
     ImageView imageView1, imageView2, imageView3, imageView4, imageView5;
     TextInputEditText edtName, edtPhone, edtEmail, edtAddress, edtPaymentMethod;
     Pattern pattern;
-
+    SharedPreferences preferences = getActivity().getSharedPreferences("SHAREDPREFS", getActivity().MODE_PRIVATE);
+ public    String user_name = preferences.getString("text", null);
     public ProfileFragment() {
         // Required empty public constructor
 
@@ -60,10 +61,9 @@ public class ProfileFragment extends Fragment {
 //lấy com.example.agile_phoneshoping.data từ SharedPreferences
 
         //lấy tài khoản đăng nhập về
-        SharedPreferences preferences = getActivity().getSharedPreferences("SHAREDPREFS", getActivity().MODE_PRIVATE);
-        String user_name = preferences.getString("text", null);
+
         Log.e("tài khoản đang online ", " : " + user_name);
-        User u = db.userDAO().getUserByName("nguyễn văn tú");
+        User u = db.userDAO().getUserByName(user_name);
         if (u == null) {
             Toast.makeText(getContext(), "không có tk nào", Toast.LENGTH_SHORT).show();
             edtName.setText("loading....");
@@ -138,12 +138,12 @@ public class ProfileFragment extends Fragment {
                 AppDatabase db = Room.databaseBuilder(getContext(),
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updateName = edtName.getText().toString().trim();
-                User u = db.userDAO().getUserByName("nguyễn văn tú");
-                int result = db.userDAO().update(new User(1, u.name, u.email, u.phone, u.address, u.paymentmethod));
+                User u = db.userDAO().getUserByName(user_name);
+                int result = db.userDAO().update(new User(u.username,updateName, u.password, u.email,u.phone, u.address, u.paymentmethod,u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
-                    edtEmail.setText(edtName.getText().toString().trim());
+                    edtName.setText(edtName.getText().toString().trim());
 
                 } else {
                     Toast.makeText(getContext(), "Update thất bại", Toast.LENGTH_SHORT).show();
@@ -178,7 +178,7 @@ public class ProfileFragment extends Fragment {
                 String updateEmail = edtName.getText().toString().trim();
                 String emailRegEx = "^[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,4}$";
                 pattern = Pattern.compile(emailRegEx);
-                User u = db.userDAO().getUserByName("nguyễn văn tú");
+                User u = db.userDAO().getUserByName(user_name);
 
                 if(u ==null){
                     Toast.makeText(getContext(), "tài khoản k tồn tại", Toast.LENGTH_SHORT).show();
@@ -186,7 +186,7 @@ public class ProfileFragment extends Fragment {
                     if (!Patterns.EMAIL_ADDRESS.matcher(updateEmail).matches()){
                         Toast.makeText(getContext(), "email sai định dạng", Toast.LENGTH_SHORT).show();
                     }else {
-                        int result = db.userDAO().update(new User(1, u.name, updateEmail, u.phone, u.address, u.paymentmethod));
+                        int result = db.userDAO().update(new User(u.username,u.name, u.password, updateEmail,u.phone, u.address, u.paymentmethod,u.role));
                         if (result > 0) {
                             Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                             // thông báo cho thay đổi
@@ -226,9 +226,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 AppDatabase db = Room.databaseBuilder(getContext(),
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
-                int updatePhone = Integer.parseInt(edtName.getText().toString().trim());
-                User u = db.userDAO().getUserByName("nguyễn văn tú");
-                int result = db.userDAO().update(new User(1, u.name, u.email, updatePhone, u.address, u.paymentmethod));
+                String updatePhone =edtName.getText().toString().trim();
+                User u = db.userDAO().getUserByName(user_name);
+                int result = db.userDAO().update(new User(u.username,u.name, u.password, u.email,updatePhone, u.address, u.paymentmethod,u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
@@ -264,8 +264,8 @@ public class ProfileFragment extends Fragment {
                 AppDatabase db = Room.databaseBuilder(getContext(),
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updateAddress = edtName.getText().toString().trim();
-                User u = db.userDAO().getUserByName("nguyễn văn tú");
-                int result = db.userDAO().update(new User(1, u.name, u.email, u.phone, updateAddress, u.paymentmethod));
+                User u = db.userDAO().getUserByName(user_name);
+                int result = db.userDAO().update(new User(u.username,u.name, u.password, u.email,u.phone, updateAddress, u.paymentmethod,u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
@@ -301,8 +301,8 @@ public class ProfileFragment extends Fragment {
                 AppDatabase db = Room.databaseBuilder(getContext(),
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updatePayment = edtName.getText().toString().trim();
-                User u = db.userDAO().getUserByName("nguyễn văn tú");
-                int result = db.userDAO().update(new User(1, u.name, u.email, u.phone, u.address, updatePayment));
+                User u = db.userDAO().getUserByName(user_name);
+                int result = db.userDAO().update(new User(u.username,u.name, u.password, u.email,u.phone, u.address, updatePayment,u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi

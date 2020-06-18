@@ -34,6 +34,14 @@ public class User {
     @ColumnInfo(name = "role")
     public String role;
 
-
-
+    public User(@NonNull String username, String name, String password, String email, String phone, String address, String paymentmethod, String role) {
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.paymentmethod = paymentmethod;
+        this.role = role;
+    }
 }

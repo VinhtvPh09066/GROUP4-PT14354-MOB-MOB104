@@ -100,17 +100,12 @@ public class SignupActivity extends AppCompatActivity {
         } else if (checkpassword.length() > 6 && checkpassword.length() < 10) {
             for (int i = 0; i < checkpassword.length(); i++) {
                 if (Character.isWhitespace(checkpassword.charAt(i))) {
-                    edtsignupPassword.setError("Password đang bị khoảng trắng, vui lòng thử lại");
+                    edtsignupPassword.setError("Password đang bị khoảng trắng, vui lòng thử lại");;;
                     return false;
                 }
             }
         } else {
-            User user = new User(id, checkuser, checkpassword, "Cập Nhật", checkemail, 0, "Cập Nhật", "Cập Nhật");
-            user.userId = id;
-            user.email = checkemail;
-            user.username = checkuser;
-            user.password = checkpassword;
-            long[] result = db.userDAO().insert(user);
+            long[] result = db.userDAO().insert(new User(checkuser,checkuser,checkpassword,checkemail,"cập nhật","cập nhật","tiền mặt","user"));
             if (result[0] > 0) {
                 Toast.makeText(SignupActivity.this, "Thêm Thành Công Username : " + checkuser, Toast.LENGTH_SHORT).show();
                 checkdialog = true;
