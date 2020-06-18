@@ -32,10 +32,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
+
         AppDatabase db = Room.databaseBuilder(this,
                 AppDatabase.class, "user.db").allowMainThreadQueries().build();
         //test data
-        db.userDAO().delete(new User(1, "nguyễn văn tú", "tunvph", 5555, "hà nam", "tiền mặt"));
+
+        db.userDAO().delete(new User());
         db.userDAO().insert(new User(1, "nguyễn văn tú", "tunvph", 5555, "hà nam", "tiền mặt"));
         // Login navigate
         btnLogin.setOnClickListener(new View.OnClickListener() {
