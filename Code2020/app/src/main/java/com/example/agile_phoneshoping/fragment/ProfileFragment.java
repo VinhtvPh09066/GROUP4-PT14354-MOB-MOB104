@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +25,12 @@ import com.example.agile_phoneshoping.database.AppDatabase;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.regex.Pattern;
+
 public class ProfileFragment extends Fragment {
     ImageView imageView1, imageView2, imageView3, imageView4, imageView5;
     TextInputEditText edtName, edtPhone, edtEmail, edtAddress, edtPaymentMethod;
-
+    Pattern pattern;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -81,7 +84,7 @@ public class ProfileFragment extends Fragment {
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogEmail();
+                showDialogName();
             }
         });
         imageView2.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +139,7 @@ public class ProfileFragment extends Fragment {
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updateName = edtName.getText().toString().trim();
                 User u = db.userDAO().getUserByName("nguyễn văn tú");
-                int result = db.userDAO().update(new User(1, u.name, updateName, u.phone, u.address, u.paymentmethod));
+                int result = db.userDAO().update(new User(1, u.name, u.email, u.phone, u.address, u.paymentmethod));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
@@ -173,15 +176,29 @@ public class ProfileFragment extends Fragment {
                 AppDatabase db = Room.databaseBuilder(getContext(),
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updateEmail = edtName.getText().toString().trim();
+                String emailRegEx = "^[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,4}$";
+                pattern = Pattern.compile(emailRegEx);
                 User u = db.userDAO().getUserByName("nguyễn văn tú");
-                int result = db.userDAO().update(new User(1, u.name, updateEmail, u.phone, u.address, u.paymentmethod));
-                if (result > 0) {
-                    Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
-                    // thông báo cho thay đổi
-                    edtEmail.setText(updateEmail);
-                } else {
-                    Toast.makeText(getContext(), "Update thất bại", Toast.LENGTH_SHORT).show();
+
+                if(u ==null){
+                    Toast.makeText(getContext(), "tài khoản k tồn tại", Toast.LENGTH_SHORT).show();
+                }else{
+                    if (!Patterns.EMAIL_ADDRESS.matcher(updateEmail).matches()){
+                        Toast.makeText(getContext(), "email sai định dạng", Toast.LENGTH_SHORT).show();
+                    }else {
+                        int result = db.userDAO().update(new User(1, u.name, updateEmail, u.phone, u.address, u.paymentmethod));
+                        if (result > 0) {
+                            Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
+                            // thông báo cho thay đổi
+                            edtEmail.setText(updateEmail);
+                        } else {
+                            Toast.makeText(getContext(), "Update thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
+
+
+
             }
         });
         build.create().show();
