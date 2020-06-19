@@ -44,4 +44,5 @@ public class User {
         this.paymentmethod = paymentmethod;
         this.role = role;
     }
+
 }

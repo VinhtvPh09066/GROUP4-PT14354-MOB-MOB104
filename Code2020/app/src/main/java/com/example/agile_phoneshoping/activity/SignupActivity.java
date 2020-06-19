@@ -73,20 +73,25 @@ public class SignupActivity extends AppCompatActivity {
                         } else if (!checkIsBlank(checkpassword)){
                             edtsignupPassword.setError("Username có khoảng trắng, vui lòng thử lại");
                         } else {
+                            User user=db.userDAO().getUserByName(checkuser);
+                            if(user ==null){
 
-                            User user = new User(checkuser,checkuser,checkpassword,checkemail,"cập nhật","cập nhật","tiền mặt","user");
-                            user.username = checkuser;
-                            user.name = checkuser;
-                            user.password = checkpassword;
-                            user.email = checkemail;
-                            long[] result = db.userDAO().insert(user);
-                            if (result[0] > 0) {
-                                Toast.makeText(SignupActivity.this, "Thêm Thành Công Username : " + checkuser, Toast.LENGTH_SHORT).show();
-                                checkdialog = true;
-                            } else {
-                                Toast.makeText(SignupActivity.this, "Thất bại, User : " + checkuser + " Đã tồn tại", Toast.LENGTH_SHORT).show();
+                                User u = new User(checkuser,checkuser,checkpassword,checkemail,"cập nhật","cập nhật","tiền mặt","user");
+
+                                long[] result = db.userDAO().insert(u);
+                                if (result[0] > 0) {
+                                    Toast.makeText(SignupActivity.this, "Thêm Thành Công Username : " + checkuser, Toast.LENGTH_SHORT).show();
+                                    checkdialog = true;
+                                } else {
+                                    Toast.makeText(SignupActivity.this, "Thất bại, User : " + checkuser + " Đã tồn tại", Toast.LENGTH_SHORT).show();
+                                    checkdialog = false;
+                                }
+                            }else{
+                                Toast.makeText(SignupActivity.this, "tai khoan da ton tai " + checkuser, Toast.LENGTH_SHORT).show();
                                 checkdialog = false;
+
                             }
+
                         }
                 }
 

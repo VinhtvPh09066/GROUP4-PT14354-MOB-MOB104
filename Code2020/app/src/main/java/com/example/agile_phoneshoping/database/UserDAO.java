@@ -24,8 +24,11 @@ public interface UserDAO {
     @Query("SELECT * FROM User")
     List<User> getAll();
 
-    @Query("SELECT * FROM User WHERE name =:name ")
-    User getUserByName(String name);
+    @Query("SELECT * FROM User WHERE username =:username ")
+    User getUserByName(String username);
+
+
+
 
     @Query("SELECT * FROM User WHERE username =:username and password =:password ")
     User checkUser(String username, String password);
