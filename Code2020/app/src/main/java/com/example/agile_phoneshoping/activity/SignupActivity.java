@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -38,12 +39,58 @@ public class SignupActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validater()) {
                     // dung het , show dialog thoong bao loi hoac thanh cong
-                    checkSignup();
+                AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "user.db").allowMainThreadQueries().build();
+                String checkemail = edtsignupEmail.getText().toString().trim();
+                String checkuser = edtsignupUsername.getText().toString().trim();
+                String checkpassword = edtsignupPassword.getText().toString().trim();
+                String emailRegEx = "^[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,4}$";
+
+                pattern = Pattern.compile(emailRegEx);
+
+                if (checkemail.length() == 0) {
+                    edtsignupEmail.setError("Vui Lòng Nhập Email !");
+                    edtsignupEmail.requestFocus();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(checkemail).matches()) {
+                    edtsignupEmail.setError("Email Sai định dạng !");
+                    edtsignupEmail.requestFocus();
+                }
+                else if (checkuser.length() == 0) {
+                    edtsignupUsername.setError("Vui Lòng Nhập Username!");
+                } else if (checkuser.length() < 6) {
+                    edtsignupUsername.setError("Username phải lớn hơn 6 ký tự , vui lòng thử lại");
+                } else if (checkuser.length() > 30) {
+                    edtsignupUsername.setError("Username phải nhỏ hơn 30 ký tự, vui lòng thử lại");
+                }  else if (checkpassword.length() == 0) {
+                    edtsignupPassword.setError("Vui Lòng Nhập Password !");
+                } else if (checkpassword.length() < 6) {
+                    edtsignupPassword.setError("Password tối thiểu phải 6 ký tự, vui lòng thử lại");
+                } else if (checkpassword.length() > 10) {
+                    edtsignupPassword.setError("Password không được vượt quá 10 ký tự, vui lòng thử lại");
+                } else {
+                        if (!checkIsBlank(checkuser)){
+                            edtsignupUsername.setError("Username có khoảng trắng, vui lòng thử lại");
+                        } else if (!checkIsBlank(checkpassword)){
+                            edtsignupPassword.setError("Username có khoảng trắng, vui lòng thử lại");
+                        } else {
+
+                            User user = new User(checkuser,checkuser,checkpassword,checkemail,"cập nhật","cập nhật","tiền mặt","user");
+                            user.username = checkuser;
+                            user.name = checkuser;
+                            user.password = checkpassword;
+                            user.email = checkemail;
+                            long[] result = db.userDAO().insert(user);
+                            if (result[0] > 0) {
+                                Toast.makeText(SignupActivity.this, "Thêm Thành Công Username : " + checkuser, Toast.LENGTH_SHORT).show();
+                                checkdialog = true;
+                            } else {
+                                Toast.makeText(SignupActivity.this, "Thất bại, User : " + checkuser + " Đã tồn tại", Toast.LENGTH_SHORT).show();
+                                checkdialog = false;
+                            }
+                        }
                 }
 
-
+                checkSignup();
             }
         });
     }
@@ -55,68 +102,6 @@ public class SignupActivity extends AppCompatActivity {
         btnSignup = (Button) findViewById(R.id.btnSignup);
     }
 
-    private boolean validater() {
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "user.db").allowMainThreadQueries().build();
-        String checkemail = edtsignupEmail.getText().toString().trim();
-        String checkuser = edtsignupUsername.getText().toString().trim();
-        String checkpassword = edtsignupPassword.getText().toString().trim();
-        String emailRegEx = "^[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,4}$";
-        Integer id = new Random().nextInt();
-
-        pattern = Pattern.compile(emailRegEx);
-
-        if (checkemail.length() == 0) {
-            edtsignupEmail.setError("Vui Lòng Nhập Email !");
-            edtsignupEmail.requestFocus();
-            return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(checkemail).matches()) {
-            edtsignupEmail.setError("Email Sai định dạng !");
-            edtsignupEmail.requestFocus();
-            return false;
-        }
-        if (checkuser.length() == 0) {
-            edtsignupUsername.setError("Vui Lòng Nhập Username!");
-            return false;
-        } else if (checkuser.length() < 6) {
-            edtsignupUsername.setError("Username phải lớn hơn 6 ký tự , vui lòng thử lại");
-            return false;
-        } else if (checkuser.length() > 30) {
-            edtsignupUsername.setError("Username phải nhỏ hơn 30 ký tự, vui lòng thử lại");
-            return false;
-        } else if (checkuser.length() > 6 && checkuser.length() < 30) {
-            if (!checkIsBlank(checkuser)){
-                edtsignupUsername.setError("Username có khoảng trắng, vui lòng thử lại");
-                return false;
-            }
-        } else if (checkpassword.length() == 0) {
-            edtsignupPassword.setError("Vui Lòng Nhập Password !");
-            return false;
-        } else if (checkpassword.length() < 6) {
-            edtsignupPassword.setError("Password tối thiểu phải 6 ký tự, vui lòng thử lại");
-            return false;
-        } else if (checkpassword.length() > 10) {
-            edtsignupPassword.setError("Password không được vượt quá 10 ký tự, vui lòng thử lại");
-            return false;
-        } else if (checkpassword.length() > 6 && checkpassword.length() < 10) {
-            for (int i = 0; i < checkpassword.length(); i++) {
-                if (Character.isWhitespace(checkpassword.charAt(i))) {
-                    edtsignupPassword.setError("Password đang bị khoảng trắng, vui lòng thử lại");;;
-                    return false;
-                }
-            }
-        } else {
-            long[] result = db.userDAO().insert(new User(checkuser,checkuser,checkpassword,checkemail,"cập nhật","cập nhật","tiền mặt","user"));
-            if (result[0] > 0) {
-                Toast.makeText(SignupActivity.this, "Thêm Thành Công Username : " + checkuser, Toast.LENGTH_SHORT).show();
-                checkdialog = true;
-            } else {
-                checkdialog = false;
-            }
-
-        }
-
-        return true;
-    }
 
     private void checkSignup() {
         // thanh cong hoac that bai
