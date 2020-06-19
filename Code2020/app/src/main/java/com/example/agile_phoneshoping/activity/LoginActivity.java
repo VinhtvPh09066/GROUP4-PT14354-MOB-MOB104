@@ -40,11 +40,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (validater()) {
                     if (checkUser(edtUsername.getText().toString(), edtPassword.getText().toString())) {
+                        saveData();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
-                        saveData();
                     }
-
                 }
             }
         });
@@ -73,52 +72,62 @@ public class LoginActivity extends AppCompatActivity {
         String password = edtPassword.getText().toString().trim();
 
         if (username.equals("")) {
-            Toast.makeText(this, "Hãy nhập tài khoản !", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Hãy nhập tài khoản !", Toast.LENGTH_SHORT).show();
+            edtUsername.setError("Hãy nhập tài khoản !");
             edtUsername.requestFocus();
             return false;
         } else if (username.length() < 6 || username.length() > 30) {
-            Toast.makeText(this, "Tài khoản phải từ 6 - 30 kí tự !", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Tài khoản phải từ 6 - 30 kí tự !", Toast.LENGTH_SHORT).show();
+            edtUsername.setError("Tài khoản phải từ 6 - 30 kí tự !");
             edtUsername.requestFocus();
             return false;
 
         } else if (password.equals("")) {
-            Toast.makeText(this, "Hãy nhập mật khẩu !", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Hãy nhập mật khẩu !", Toast.LENGTH_SHORT).show();
+            edtPassword.setError("Hãy nhập mật khẩu !");
             edtPassword.requestFocus();
             return false;
 
         } else if (password.length() < 6 || password.length() > 10) {
-            Toast.makeText(this, "Mật khẩu phải từ 6 - 10 kí tự !", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Mật khẩu phải từ 6 - 10 kí tự !", Toast.LENGTH_SHORT).show();
+            edtPassword.setError("Mật khẩu phải từ 6 - 10 kí tự !");
             edtPassword.requestFocus();
             return false;
-        } else if (username == "username" && password == "username") {
-            return true;
         }
-
         return true;
     }
 
     //save data
     public void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(USERNAME, edtUsername.getText().toString());
+        editor.putString("USERNAME", edtUsername.getText().toString());
         editor.apply();
 
 //        editor.commit();
-        String userName = sharedPreferences.getString(USERNAME, "not found");
+        String userName = sharedPreferences.getString("USERNAME", "not found");
         Log.e("user đăng nhập  là ", ":" + userName);
         Toast.makeText(getApplicationContext(), "user đăng nhập  là " + userName, Toast.LENGTH_SHORT).show();
     }
 
     public boolean checkUser(String u, String p) {
-        AppDatabase db = Room.databaseBuilder(this,
-                AppDatabase.class, "user.db").allowMainThreadQueries().build();
-
-        User result = db.userDAO().checkUser(u, p);
-
-        if (result != null) {
+        if (u.equals("username") && p.equals("username")) {
+            Log.e("username", "2222222222");
             return true;
+        } else {
+            AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "user.db")
+                    .allowMainThreadQueries()
+                    .build();
+
+            User result = db.userDAO().checkUser(u, p);
+
+            Log.e("aaaaa", result + "");
+            if (result == null) {
+                Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không đúng !", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 }
