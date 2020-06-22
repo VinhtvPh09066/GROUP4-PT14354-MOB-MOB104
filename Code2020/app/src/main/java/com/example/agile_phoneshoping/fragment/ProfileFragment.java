@@ -3,7 +3,6 @@ package com.example.agile_phoneshoping.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -15,13 +14,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.room.Room;
 
 import com.example.agile_phoneshoping.R;
-import com.example.agile_phoneshoping.activity.MainActivity;
-import com.example.agile_phoneshoping.model.User;
 import com.example.agile_phoneshoping.database.AppDatabase;
+import com.example.agile_phoneshoping.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -31,8 +28,11 @@ public class ProfileFragment extends Fragment {
     ImageView imageView1, imageView2, imageView3, imageView4, imageView5;
     TextInputEditText edtName, edtPhone, edtEmail, edtAddress, edtPaymentMethod;
     Pattern pattern;
-    SharedPreferences preferences = getActivity().getSharedPreferences("SHAREDPREFS", getActivity().MODE_PRIVATE);
- public    String user_name = preferences.getString("text", null);
+
+    SharedPreferences preferences = getContext().getSharedPreferences("SHAREDPREFS", getContext().MODE_PRIVATE);
+
+    public String user_name = preferences.getString("USERNAME", null);
+
     public ProfileFragment() {
         // Required empty public constructor
 
@@ -120,7 +120,7 @@ public class ProfileFragment extends Fragment {
         final View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_updatename, null, false);
         build.setView(view1);
         final EditText edtName = view1.findViewById(R.id.edtUpdateName);
-        TextInputLayout layout=view1.findViewById(R.id.layout);
+        TextInputLayout layout = view1.findViewById(R.id.layout);
         layout.setHint("mời nhập Name");
         build.setCancelable(false);
         build.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -139,7 +139,7 @@ public class ProfileFragment extends Fragment {
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updateName = edtName.getText().toString().trim();
                 User u = db.userDAO().getUserByName(user_name);
-                int result = db.userDAO().update(new User(u.username,updateName, u.password, u.email,u.phone, u.address, u.paymentmethod,u.role));
+                int result = db.userDAO().update(new User(u.username, updateName, u.password, u.email, u.phone, u.address, u.paymentmethod, u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
@@ -158,7 +158,7 @@ public class ProfileFragment extends Fragment {
         final View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_updatename, null, false);
         build.setView(view1);
         final EditText edtName = view1.findViewById(R.id.edtUpdateName);
-        TextInputLayout layout=view1.findViewById(R.id.layout);
+        TextInputLayout layout = view1.findViewById(R.id.layout);
         layout.setHint("mời nhập Email");
         build.setCancelable(false);
         build.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -180,13 +180,13 @@ public class ProfileFragment extends Fragment {
                 pattern = Pattern.compile(emailRegEx);
                 User u = db.userDAO().getUserByName(user_name);
 
-                if(u ==null){
+                if (u == null) {
                     Toast.makeText(getContext(), "tài khoản k tồn tại", Toast.LENGTH_SHORT).show();
-                }else{
-                    if (!Patterns.EMAIL_ADDRESS.matcher(updateEmail).matches()){
+                } else {
+                    if (!Patterns.EMAIL_ADDRESS.matcher(updateEmail).matches()) {
                         Toast.makeText(getContext(), "email sai định dạng", Toast.LENGTH_SHORT).show();
-                    }else {
-                        int result = db.userDAO().update(new User(u.username,u.name, u.password, updateEmail,u.phone, u.address, u.paymentmethod,u.role));
+                    } else {
+                        int result = db.userDAO().update(new User(u.username, u.name, u.password, updateEmail, u.phone, u.address, u.paymentmethod, u.role));
                         if (result > 0) {
                             Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                             // thông báo cho thay đổi
@@ -196,7 +196,6 @@ public class ProfileFragment extends Fragment {
                         }
                     }
                 }
-
 
 
             }
@@ -209,7 +208,7 @@ public class ProfileFragment extends Fragment {
         final View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_updatename, null, false);
         build.setView(view1);
         final EditText edtName = view1.findViewById(R.id.edtUpdateName);
-        TextInputLayout layout=view1.findViewById(R.id.layout);
+        TextInputLayout layout = view1.findViewById(R.id.layout);
         layout.setHint("mời nhập Phone");
         build.setCancelable(false);
         build.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -226,9 +225,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 AppDatabase db = Room.databaseBuilder(getContext(),
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
-                String updatePhone =edtName.getText().toString().trim();
+                String updatePhone = edtName.getText().toString().trim();
                 User u = db.userDAO().getUserByName(user_name);
-                int result = db.userDAO().update(new User(u.username,u.name, u.password, u.email,updatePhone, u.address, u.paymentmethod,u.role));
+                int result = db.userDAO().update(new User(u.username, u.name, u.password, u.email, updatePhone, u.address, u.paymentmethod, u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
@@ -246,7 +245,7 @@ public class ProfileFragment extends Fragment {
         final View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_updatename, null, false);
         build.setView(view1);
         final EditText edtName = view1.findViewById(R.id.edtUpdateName);
-        TextInputLayout layout=view1.findViewById(R.id.layout);
+        TextInputLayout layout = view1.findViewById(R.id.layout);
         layout.setHint("mời nhập Address");
         build.setCancelable(false);
         build.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -265,7 +264,7 @@ public class ProfileFragment extends Fragment {
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updateAddress = edtName.getText().toString().trim();
                 User u = db.userDAO().getUserByName(user_name);
-                int result = db.userDAO().update(new User(u.username,u.name, u.password, u.email,u.phone, updateAddress, u.paymentmethod,u.role));
+                int result = db.userDAO().update(new User(u.username, u.name, u.password, u.email, u.phone, updateAddress, u.paymentmethod, u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
@@ -283,7 +282,7 @@ public class ProfileFragment extends Fragment {
         final View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_updatename, null, false);
         build.setView(view1);
         final EditText edtName = view1.findViewById(R.id.edtUpdateName);
-        TextInputLayout layout=view1.findViewById(R.id.layout);
+        TextInputLayout layout = view1.findViewById(R.id.layout);
         layout.setHint("mời nhập Payment Method");
         build.setCancelable(false);
         build.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -302,7 +301,7 @@ public class ProfileFragment extends Fragment {
                         AppDatabase.class, "user.db").allowMainThreadQueries().build();
                 String updatePayment = edtName.getText().toString().trim();
                 User u = db.userDAO().getUserByName(user_name);
-                int result = db.userDAO().update(new User(u.username,u.name, u.password, u.email,u.phone, u.address, updatePayment,u.role));
+                int result = db.userDAO().update(new User(u.username, u.name, u.password, u.email, u.phone, u.address, updatePayment, u.role));
                 if (result > 0) {
                     Toast.makeText(getContext(), "Update thành công", Toast.LENGTH_SHORT).show();
                     // thông báo cho thay đổi
